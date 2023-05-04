@@ -24,28 +24,50 @@
 
 }
 
-*{
-    margin: 0;
-    padding: 0;
+html{
+    scroll-behavior: smooth;
+    line-height: 1.5;
+    font-size: 16px;
     box-sizing: border-box;
 }
 
-html{
-    scroll-behavior: smooth;
+*, 
+*::before, 
+*::after{
+    box-sizing: inherit ;
+    margin: 0;
+    padding: 0;
 }
 
 body{
     background-color: var(--bkg-color);
+    z-index: -5;
 }
 
 main{
-    position:relative;
     width: 100%;
-    top:90px;
+    margin-top:90px;
     z-index: -1;
     margin-bottom: 150px;
 }
 
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    user-select: none;
+    cursor: pointer;
+}
+
+ul,
+ol{
+    list-style: none;
+}
 
 nav{
     z-index: 1;
@@ -59,7 +81,7 @@ nav{
     color: var(--text-color);
     font-size: 25px;
     padding: .5rem 2rem;
-    background-color: white;
+    background: linear-gradient(45deg,#EEF8FF ,#004089 );
 }
 hr{
     position: fixed;
@@ -83,15 +105,117 @@ hr{
     color: var(--text-color);
 }
 
+
 .info_nav{
     display: none;
 }
 
 .content_user_carrito{
+    position:relative;
     display: flex;
     align-items: center;
     gap: 2rem;
+    padding: 0 1rem 0 0;
 }
+
+.user, 
+.link_carrito{
+    font-size: 20px;
+    color: var(--text-color);
+}
+.user:hover{
+    color: white;
+}
+.link_carrito:hover{
+    color: white;
+}
+
+.box_cant_articulo{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: red;
+    top: -3px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.cant_articulo{
+    font-size: 15px;
+    color: white;
+
+}
+
+#registro_usuario{
+    display: none;
+}
+
+.registro_usuario{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 2rem;
+    left: 0;
+    font-size: 20px;
+    gap: .5rem;
+    border-radius: 10px;
+}
+
+#cerrar_usuario{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    padding: .5rem;
+    color: var(--text-color);
+}
+
+#registro_usuario h2{
+    font-size: 20px;
+    font-family: var(--font-title);
+}
+
+#registro_usuario label{
+    font-size: 20px;
+    font-family: var(--font-text);
+}
+
+#registro_usuario input{
+    font-size: 20px;
+    color: var(--text-color);
+    border: none;
+    border-radius: 10px;
+    background-color: var(--bkg-color);
+    padding: .5rem;
+    font-family: var(--font-text);
+}
+
+.botones_user{
+    background-color: var(--bkg-color);
+    width: 244px;
+    height: 43px;
+    font-family: var(--font-text);
+    color: var(--text-color);
+    border: 1px solid var(--hover-color);
+    border-radius: 10px;
+    font-size: 20px;
+    
+}
+.botones_user:hover{
+    color: white;
+    background-color: var(--hover-color);
+}
+
 .titulo_princ{
     font-family: var(--font-title);
     text-align: start;
@@ -107,10 +231,11 @@ hr{
 .card{
     background-color: #FFFF;
     border-radius: 10px;
-    width: 80%;
+    width: 85%;
     height: 400px;
     display: flex;
     flex-direction: column;
+    align-items: start ;
 }
 .img_card{
     background-color: var(--card-color);
@@ -118,6 +243,29 @@ hr{
     height: 75%;
 }
 
+.add_carrito{
+    position: relative;
+    background-color: var(--bkg-color);
+    width: 40px;
+    height: 40px;
+    top: -20px;
+    left: 85%;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 50%;
+    color: var(--text-color);
+}
+.add_carrito:hover{
+    color: white;
+    background-color: var(--hover-color);
+}
+p{
+    text-align: center;
+    color: var(--text-color);
+    font-family: var(--font-text);
+    font-size: 15px;
+    padding: .5rem;
+}
 
 footer{
     position: relative;
@@ -130,6 +278,8 @@ footer{
     align-items: center;
     text-align: center;
     color: var(--text-color);
+    background-color: white;
+    padding: 1rem 0;
 }
 .info_footer{
     display: flex;
@@ -163,7 +313,6 @@ footer{
     display: none;
 }
 .frase_final{
-    padding: 1rem 0;
     font-size: 20px;
     font-family: var(--font-text);
 }
