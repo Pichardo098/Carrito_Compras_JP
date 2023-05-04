@@ -48,7 +48,7 @@ main{
     width: 100%;
     margin-top:90px;
     z-index: -1;
-    margin-bottom: 150px;
+    margin-bottom: auto;
 }
 
 img{
@@ -68,6 +68,7 @@ ul,
 ol{
     list-style: none;
 }
+/*------- Estilos del Nav*/
 
 nav{
     z-index: 1;
@@ -82,7 +83,46 @@ nav{
     font-size: 25px;
     padding: .5rem 2rem;
     background: linear-gradient(45deg,#EEF8FF ,#004089 );
+    box-shadow: 0 0 5px black;
 }
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bkg-color);
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader__container span{
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    color: var(--text-color);
+    background-color: var(--text-color);
+    border-radius: 50%;
+    animation: pulse 1.0s infinite ease-in-out;
+}
+
+.loader--hidden{
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease-in-out;
+}
+
+@keyframes pulse {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
 hr{
     position: fixed;
     top: 0;
@@ -142,6 +182,8 @@ hr{
     width: 15px;
     height: 15px;
     border-radius: 50%;
+    visibility: hidden;
+    transition: opacity .3s ease-in-out, visibility .3 ease-in-out;
 }
 
 .cant_articulo{
@@ -216,6 +258,8 @@ hr{
     background-color: var(--hover-color);
 }
 
+/*---- Estilos de las cards*/
+
 .titulo_princ{
     font-family: var(--font-title);
     text-align: start;
@@ -232,7 +276,7 @@ hr{
     background-color: #FFFF;
     border-radius: 10px;
     width: 85%;
-    height: 400px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: start ;
@@ -241,6 +285,15 @@ hr{
     background-color: var(--card-color);
     width: 100%;
     height: 75%;
+}
+
+.img_card img{
+    width: 100%;
+    height: 100%;
+    transition: transform .3s ease-in-out;
+}
+.img_card img:hover{
+    transform: translateY(-10px)
 }
 
 .add_carrito{
@@ -254,19 +307,36 @@ hr{
     text-align: center;
     border-radius: 50%;
     color: var(--text-color);
+    padding: 0;
+    margin: 0;
 }
 .add_carrito:hover{
     color: white;
     background-color: var(--hover-color);
+    box-shadow: 0 0 5px black;
+}
+
+.contenido_cantidad_precio{
+    padding:  0 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: auto;
+    color: var(--hover-color);
+    justify-content: space-between;
+    font-size: 15px;
+    font-family: var(--font-text);
+
 }
 p{
     text-align: center;
     color: var(--text-color);
-    font-family: var(--font-text);
-    font-size: 15px;
+    font-family: var(--font-title);
+    font-size: 20px;
     padding: .5rem;
 }
 
+/*----- Estilos del Footer-----------*/
 footer{
     position: relative;
     bottom: 0;
@@ -280,6 +350,7 @@ footer{
     color: var(--text-color);
     background-color: white;
     padding: 1rem 0;
+    margin-top: 1rem;
 }
 .info_footer{
     display: flex;
@@ -312,7 +383,112 @@ footer{
 .contenido{
     display: none;
 }
+.contact_info{
+    display: flex;
+    gap: 1rem;
+    font-size: 20px;
+    padding: 0;
+}
+
+.contact_info a{
+    padding: 5px 6px;
+    border-radius: 50%;
+    background-color: var(--bkg-color);
+    color: var(--text-color);
+}
+.contact_info a:hover{
+    color: var(--bkg-color);
+    background-color: var(--hover-color);
+}
+
 .frase_final{
     font-size: 20px;
     font-family: var(--font-text);
+
+}
+
+/*--------- CART ----------*/
+.cart{
+    position: fixed;
+    top: 85px;
+    right: 0;
+    max-width: 375px;
+    width: 100%;
+    height: calc(100vh - 85px);
+    background-color: #FFFF;
+    z-index: 10;
+    transition: right .5s ease-in-out ;
+    color: var(--text-color);
+}
+
+.cart__container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 70% 20%;
+    height: 100%;
+}
+
+.cart__header{
+    display: grid;
+    grid-template-columns: 2fr 2fr .5fr;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem 0 0 1rem;
+
+}
+.cart__title{
+    grid-column: span 2;
+    font-family: var(--font-title);
+    font-size: 20px;
+}
+.cart__btn{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+}
+.cart__body{
+    padding: 1rem;
+    overflow-y: auto;
+}
+.cart__empty{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: 15px;
+}
+.cart__empty--text{
+    font-size: 15px;
+}
+
+.cart__footer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2,1fr);
+    align-items: center;
+    background-color: var(--card-color);
+    padding: 1rem;
+    row-gap: 1rem;
+    font-size: 15px;
+    font-family: var(--font-text);
+}
+.cart__btn{
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 15px;
+}
+.cart_count{
+    grid-column: span 2;
+}
+.cart_total{
+    grid-column: span 2;
+    justify-self: flex-end;
+}
+.btn--buy{
+    grid-column: span 4;
+    background: linear-gradient(45deg,#EEF8FF ,#004089 );
+    color: var(--text-color);
+    padding: 1rem;
+    border-radius: 10px;
 }
