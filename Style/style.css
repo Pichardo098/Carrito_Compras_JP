@@ -43,6 +43,12 @@ body{
     background-color: var(--bkg-color);
     z-index: -5;
 }
+body.dark{
+    --text-color: #171b4d;
+    --hover-color:#888888;
+    --card-color: #00032e;
+    --bkg-color:#5685a7;
+}
 
 main{
     width: 100%;
@@ -62,9 +68,6 @@ button{
     background-color: transparent;
     user-select: none;
     cursor: pointer;
-}
-button > *{
-   pointer-events: none; 
 }
 
 ul,
@@ -134,6 +137,7 @@ hr{
     height: 20px;
     margin: 0;
     background-color: var(--bkg-color);
+    border: none;
 }
 .logo{
     display: flex;
@@ -159,13 +163,33 @@ hr{
     color: var(--bkg-color);
 }
 .info_nav{
-    display: none;
+    display: flex;
+    align-items: center;
+    width: 140px;
+    border: 1px solid var(--text-color);
+    padding: 2px;
+    border-radius: 50px;
+}
+#input_search{
+    width: 90%;
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 15px;
+    padding: 0 0 0 4px;
+}
+#button_search{
+    position: relative;
+    background-color: var(--bkg-color);
+    padding: 11px 11px;
+    border-radius: 50%;
+    right: -2px;
 }
 .content_user_carrito{
     position:relative;
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
     padding: 0 1rem 0 0;
 }
 
@@ -181,25 +205,27 @@ hr{
     color: white;
 }
 
-.box_cant_articulo{
+.cant_articulo{
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     background-color: red;
-    top: -3px;
+    top: -7px;
     right: 10px;
     width: 15px;
     height: 15px;
     border-radius: 50%;
+    opacity: 0;
     visibility: hidden;
     transition: opacity .3s ease-in-out, visibility .3 ease-in-out;
-}
-.cant_articulo{
-    font-size: 15px;
+    font-size: 10px;
     color: white;
-
+}
+.show--cant_articulo{
+    opacity: 1;
+    visibility: visible;
 }
 
 .registro_usuario{
@@ -316,12 +342,13 @@ hr{
     font-size: 20px;
     text-align: center;
     border-radius: 50%;
-    color: var(--text-color);
     padding: 0;
     margin: 0;
+    color: var(--text-color);
 }
+
 .add_carrito:hover{
-    color: white;
+    color: var(--bkg-color);
     background-color: var(--hover-color);
     box-shadow: 0 0 5px black;
 }
@@ -337,12 +364,20 @@ hr{
     font-family: var(--font-text);
 
 }
-p{
+.product_name{
     text-align: center;
     color: var(--text-color);
     font-family: var(--font-title);
-    font-size: 20px;
-    padding: .5rem;
+    font-size: 15px;
+    padding: 1rem;
+    font-weight: 600;
+    align-self: center;
+}
+.sku{
+    padding:  1rem;
+    font-size: 15px;
+    font-family: var(--font-text);
+    height: auto;
 }
 
 /*----- Estilos del Footer-----------*/
@@ -500,9 +535,6 @@ footer{
     object-fit: cover;
     object-position: center;
 }
-.fas{
-    color: var(--text-color);
-}
 .article__content{
     display: grid;
     align-items: center;
@@ -574,25 +606,13 @@ footer{
         color: var(--text-color);
     }
     
-    .box_cant_articulo{
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background-color: red;
-        top: -6px;
+    .cant_articulo{
+        top: -5px;
         right: 10px;
         width: 17px;
         height: 17px;
-        border-radius: 50%;
-        visibility: hidden;
-        transition: opacity .3s ease-in-out, visibility .3 ease-in-out;
     }
-    .cant_articulo{
-        font-size: 15px;
-        color: white;
-    }
+
         
     #cerrar_usuario{
         position: absolute;
@@ -613,7 +633,9 @@ footer{
     .cards{
         grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
     }
-    
+    .product_name{
+        height: 100px;
+    }
     .add_carrito{
         left: 82%;
     }
@@ -629,6 +651,9 @@ footer{
         grid-template-rows: repeat(2,70px);
         font-size: 15px;
     }
+    footer{
+        position: static;
+    }
 }
 @media ( min-width : 700px ) and ( max-width : 899px){
     .logo{
@@ -639,24 +664,11 @@ footer{
         font-size: 25px;
         color: var(--text-color);
     }
-    .box_cant_articulo{
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background-color: red;
-        top: -6px;
+    .cant_articulo{
+        top: -5px;
         right: 10px;
         width: 17px;
         height: 17px;
-        border-radius: 50%;
-        visibility: hidden;
-        transition: opacity .3s ease-in-out, visibility .3 ease-in-out;
-    }
-    .cant_articulo{
-        font-size: 15px;
-        color: white;
     }
     .cart__header > *{
         font-size: 25px;
@@ -680,6 +692,9 @@ footer{
     
     .cards{
         grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+    }
+    .product_name{
+        height: 100px;
     }
     
     .add_carrito{
@@ -697,6 +712,9 @@ footer{
         grid-template-rows: repeat(2,70px);
         font-size: 20px;
     }
+    footer{
+        position: static;
+    }
 }
 @media ( min-width : 900px ) and ( max-width : 1399px){
     .logo{
@@ -707,24 +725,13 @@ footer{
         font-size: 25px;
         color: var(--text-color);
     }
-    .box_cant_articulo{
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background-color: red;
-        top: -6px;
+    .cant_articulo{
+        top: -10px;
         right: 10px;
         width: 17px;
         height: 17px;
-        border-radius: 50%;
-        visibility: hidden;
-        transition: opacity .3s ease-in-out, visibility .3 ease-in-out;
-    }
-    .cant_articulo{
-        font-size: 15px;
-        color: white;
+        font-size: 20px;
+        padding: 10px;
     }
     .cart__header > *{
         font-size: 25px;
@@ -755,6 +762,9 @@ footer{
     }
     .cart{
         top: 94px;
+    }
+    .product_name{
+        height: 100px;
     }
     .info_footer{
         width: 50%;
@@ -773,6 +783,9 @@ footer{
     
     .frase_final{
         font-weight: 700;
+    }
+    footer{
+        position: static;
     }
 }
 @media ( min-width : 1400px ){
@@ -832,6 +845,10 @@ footer{
         flex-direction: column;
         align-items: start ;
     }
+    .product_name{
+
+        height: 100px;
+    }
     .logo{
         width: 50px;
     }
@@ -840,24 +857,13 @@ footer{
         font-size: 25px;
         color: var(--text-color);
     }
-    .box_cant_articulo{
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background-color: red;
-        top: -6px;
+    .cant_articulo{
+        top: -10px;
         right: 10px;
         width: 17px;
         height: 17px;
-        border-radius: 50%;
-        visibility: hidden;
-        transition: opacity .3s ease-in-out, visibility .3 ease-in-out;
-    }
-    .cant_articulo{
-        font-size: 15px;
-        color: white;
+        font-size: 20px;
+        padding: 10px;
     }
     .cart__header > *{
         font-size: 25px;
@@ -970,7 +976,7 @@ footer{
         font-weight: 700;
     }
     footer{
-        position: relative;
+        position: static;
         bottom: 0;
         width: 100%;
         display:flex;
