@@ -119,13 +119,13 @@ function cart (db, printProducts){
                             printCart()
                         }
                         
-                        
                     }
-                  
+                    
                 }
             }
+            window.alert("Gracias por su compra")
         }
-        window.alert("Gracias por su compra")
+     
     }
 
 
