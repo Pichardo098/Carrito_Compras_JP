@@ -8,6 +8,7 @@ function products (products){
         for ( let product of bd){
             htmlCard += `
             <article class="card" id="${product.id}">
+
                 <div class="img_card">
                     <img src="${product.image}" alt="${product.name}">
                 </div>
@@ -28,6 +29,8 @@ function products (products){
                     SKU: ${product.id}
                 </div>
             </article>
+
+
             `
         }
         productsDOM.innerHTML = htmlCard

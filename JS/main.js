@@ -7,7 +7,7 @@ import cerrar_cart from "./components/cart_nav/cerrar_cart.js"
 import theme from "./components/theme.js"
 
 import visible_card_footer from "./components/about_footer/mostrar_card.js"
-import ocultar_card_footer from "./components/about_footer/cerrar_card.js"
+
 
 import products from "./components/products.js"
 import getProducts from "./helpers/getProducts.js"
@@ -24,15 +24,15 @@ mostrar_cart_nav()
 cerrar_cart()
 sesion_crear_cuenta()
 visible_card_footer()
-ocultar_card_footer()
+
 // ------END UI Elements --------
 
 //------Products --------
 
+
 const {bd, printProducts} = products(await getProducts())
 
 /* Carrito */
+
 cart(bd, printProducts)
-
-
 

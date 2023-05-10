@@ -8,7 +8,6 @@ function cart (db, printProducts){
     const totalDOM = document.querySelector(".cart__total--item")
     const checkoutDOM = document.querySelector(".btn--buy")
     
-    console.log(productsDOM.children[0].children[2].children[1].children[1].textContent)
     //Funcions
     function printCart(){
         let htmlCart = ' '
@@ -99,21 +98,34 @@ function cart (db, printProducts){
         }
         return total
     }
-    function checkout(){
-        for(const item of cart){
-            console.log(item)
-            const productFinded = db.find(p=> p.id === item.id)
-            productFinded.quantity - item.qty
+    function checkout(){      
+        if(cart.length === 0){
+            window.alert("Favor de agregar articulos al carrito")
+        }else if(cart.length > 0){
+            for(const item of cart){
+                for(let i = 0; i < db.length; i++){
+                    if(db[i].id === item.id){
+                        if(db[i].quantity === 0){
+                            window.alert(`Lo siento, en este momento no tenemos stock del srticulo con ID ${item.id}`)
+                            cart =[]
+                            printCart()
+                        }else if(db[i].quantity < item.qty  ){
+                            window.alert(`No puedes comprar mas de ${db[i].quantity} del articulo con ID ${item.id}`)
+                        }else if(db[i].quantity >= item.qty ){
+                            db[i].quantity -= item.qty
+                            let total = showTotal()
+                            cart =[]
+                            printProducts()
+                            printCart()
+                        }
+                        
+                        
+                    }
+                  
+                }
+            }
         }
-        cart = []
-        console.log(cart.length)
-        if(cart.length <= 0){
-            window.alert('Gracias por su compra')
-        }else {
-            window.alert('Favor de agregar productos al carrito')
-        }
-        printCart()
-        printProducts()
+        window.alert("Gracias por su compra")
     }
 
 
