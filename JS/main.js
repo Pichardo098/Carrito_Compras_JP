@@ -13,6 +13,8 @@ import products from "./components/products.js"
 import getProducts from "./helpers/getProducts.js"
 
 import cart from "./components/cart.js"
+
+import printModal  from "./components/modal.js"
 /* ------ UI Elements ------- */
 /*Ocultar Loader*/
 loader()
@@ -35,4 +37,6 @@ const {bd, printProducts} = products(await getProducts())
 /* Carrito */
 
 cart(bd, printProducts)
+printModal(bd, printProducts)
+
 

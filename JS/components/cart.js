@@ -6,8 +6,10 @@ function cart (db, printProducts){
     const cartDOM =  document.querySelector(".cart__body")
     const countDOM = document.querySelector(".cart__count--item")
     const totalDOM = document.querySelector(".cart__total--item")
+    const totalIvaDOM = document.querySelector(".total__iva")
     const checkoutDOM = document.querySelector(".btn--buy")
     
+
     //Funcions
     function printCart(){
         let htmlCart = ' '
@@ -56,7 +58,8 @@ function cart (db, printProducts){
         cartDOM.innerHTML = htmlCart
         box_cant_item.innerHTML = showItemsCount()
         countDOM.innerHTML = showItemsCount()
-        totalDOM.innerHTML = showTotal()
+        totalDOM.innerHTML =  `$${showTotal()}`
+        totalIvaDOM.innerHTML = `$ ${(showTotal() * 1.16).toFixed(2)}`
     }
     function addToCart(id, qty = 1){
         const itemFinded = cart.find(i => i.id === id)
@@ -106,24 +109,23 @@ function cart (db, printProducts){
                 for(let i = 0; i < db.length; i++){
                     if(db[i].id === item.id){
                         if(db[i].quantity === 0){
-                            window.alert(`Lo siento, en este momento no tenemos stock del srticulo con ID ${item.id}`)
                             cart =[]
                             printCart()
+                            printProducts()
                         }else if(db[i].quantity < item.qty  ){
                             window.alert(`No puedes comprar mas de ${db[i].quantity} del articulo con ID ${item.id}`)
                         }else if(db[i].quantity >= item.qty ){
                             db[i].quantity -= item.qty
-                            let total = showTotal()
                             cart =[]
                             printProducts()
                             printCart()
+                            window.alert("Gracias por su compra")
                         }
                         
                     }
                     
                 }
             }
-            window.alert("Gracias por su compra")
         }
      
     }

@@ -71,7 +71,7 @@
         </h1>
         <section class="cards" id="cards">
             <article class="card" id="1">
-                <div class=".hidden_card"></div>
+                <div id="hidden_card">Producto Agotado</div>
                 <div class="img_card">
                     <img src="https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png" alt="camisa_logo1">
                 </div>
@@ -92,6 +92,24 @@
 
         </section>
     </main>
+        <section class="modals">
+            <section class="modal">
+                <div class="img_card">
+                    <img src="https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png" alt="camisa_logo1">
+                </div>
+                <p>
+                    Este sweater con cuello redondo está hecho de una mezcla suave de lana y acrílico para mayor comodidad y calidez. Es ideal para un look casual y cómodo.
+                </p>
+                <p class="sku">
+                    SKU: 1
+                </p>
+                <button type="button" class="close__modal">
+                    Salir
+                </button>
+            </section>
+        </section>
+
+    
     <section class="cart">
         <div class="cart__container">
             <div class="cart__header">
@@ -145,8 +163,10 @@
                     <span class="cart__count--item">0</span>
                 </div>
                 <div class="cart_total">
-                    <span class="cart__total--text">Total:</span>
-                    <span class="cart__total--item">$0</span>
+                    <span class="cart__total--text">Subtotal:</span>
+                    <span class="cart__total--item">$0</span> <br>
+                    <span class="cart__total--text">Total (con IVA) :</span>
+                    <span class="cart__total--item total__iva">$0</span>
                 </div>
                 <button type="button" class="cart__btn btn--buy">
                     Comprar
